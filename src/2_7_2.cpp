@@ -17,10 +17,10 @@ int ** array(size_t md, size_t nd) {
 
 int ** transpose(const int * const * m, size_t r, size_t c) {
     // put your code here
-    int ** res = array(r, c);
+    int ** res = array(c, r);
     size_t i = 0;
-    for(;i<r;i++)
-        for(int j = 0;j<c;j++)
+    for(;i<c;i++)
+        for(int j = 0;j<r;j++)
            res[i][j] = m[j][i];
     return res;
 }
@@ -60,7 +60,7 @@ int main() {
     m[0][0] = 4; m[0][1] = 5; m[0][2] = 6; m[0][3] = 7;
     m[2][0] = 3; m[2][1] = 2; m[2][2] = 6; m[2][3] = 1;
 
-    int ** tm = transpose(m, nd, md);
+    int ** tm = transpose(m, md, nd);
     size_t i = 0;
     for(;i<nd;i++) {
         for(size_t j = 0;j<md;j++)
