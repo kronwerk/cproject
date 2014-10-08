@@ -51,7 +51,7 @@ struct String {
         for(;i < old_size;i++)
             str_[i] = old[i];
         for(;i < size_;i++)
-            str_[i] = str.str_[i - old_size];*/
+            str_[i] = str.str_[i - old_size];
         str_[i] = '\0';
         delete [] old;
     }
