@@ -7,7 +7,7 @@
 #include <algorithm>
 using namespace std;
 
-struct Expression {};
+struct Expression;
 struct Number;
 struct BinaryOperation;
 struct FunctionCall;
@@ -35,7 +35,6 @@ struct SharedPtr
 		}
 		else
 			counter = 0;
-		//aEq();
 	}
 
 	void swap(SharedPtr & sp) {
@@ -44,12 +43,8 @@ struct SharedPtr
 	}
 
     SharedPtr& operator=(const SharedPtr& sp) {
-		//aEq();
-		if ((this != &sp) && (this->get() != sp.get())) {
-			decrementClearIfNeeded();
+		if (this != &sp) 
 			SharedPtr(sp).swap(*this);
-		};
-		//aEq();
 		return *this;
 	}
 
@@ -70,11 +65,9 @@ struct SharedPtr
 	}
 
     void reset(Expression *ptr = 0) {
-		//aEq();
 		if (get() != ptr)
 			decrementClearIfNeeded();
 			init(ptr);
-		//aEq();
 	}
 
 	void decrementClearIfNeeded() {
@@ -98,11 +91,6 @@ struct SharedPtr
 
 	int * count() {
 		return counter;
-	}
-
-	void aEq() {
-		if ((ptr_) && (counter))
-			assert((void *)ptr_ != (void *)counter);
 	}
 
 private:
